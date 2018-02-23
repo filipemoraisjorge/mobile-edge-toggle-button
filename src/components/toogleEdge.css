@@ -1,9 +1,11 @@
-.toggleEdge {
+.toggleEdge--container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.toggleEdge--button {
     width: 2.5rem;
     height: 2.5rem;
     color: #334;
     background-color: #CCD;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
