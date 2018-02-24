@@ -8,8 +8,8 @@ class App extends Component {
     status: false,
   }
 
-  toggleStatus = () => {
-    this.setState({ status: !this.state.status });
+  toggleStatus = (status) => {
+    this.setState({ status });
   }
 
   statusLegend = () => {
@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div className="app">
         <div className="app-foreground">
-          <ToggleEdge value={this.statusLegend()} onChange="toggleStatus" />
+          <ToggleEdge value={this.statusLegend()} onChange={this.toggleStatus} />
         </div>
         <div className="app-background">
           <div className="app-background--status" >
