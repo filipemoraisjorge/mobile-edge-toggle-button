@@ -47,7 +47,7 @@ class ToogleEdge extends Component {
     const draggable = new Draggable(containers, {
       draggable: '.toggleEdge--button',
       delay: 0,
-      mirror: { constrainDimensions: true, xAxis: true, yAxis: false },
+      mirror: { constrainDimensions: false, xAxis: true, yAxis: false },
       appendTo: containerSelector,
     });
 
@@ -70,7 +70,7 @@ class ToogleEdge extends Component {
       this.containerRect = evt.sourceContainer.getBoundingClientRect();
       this.dragRect = evt.originalSource.getBoundingClientRect();
   
-      const containerRectQuarter = this.containerRect.width / 2;
+      const containerRectQuarter = this.containerRect.width / 4;
       this.dragThreshold = this.isToggled ? containerRectQuarter * -1 : containerRectQuarter;
       this.headings = {
         source: evt.originalSource,
