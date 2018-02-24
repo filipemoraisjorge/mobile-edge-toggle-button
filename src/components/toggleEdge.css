@@ -1,6 +1,4 @@
 .toggleEdge--container {
-    position: absolute;
-    top: 100px;
     width: 100vw;
     display: flex;
     justify-content: flex-start;
@@ -10,7 +8,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 2.5rem;
+    min-width: 2.5rem;
+    width: fit-content;
     height: 4.05rem;
     color: #334;
     background-color: #CCD;

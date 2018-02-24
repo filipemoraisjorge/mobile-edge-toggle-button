@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Draggable } from '@shopify/draggable';
 
-import './toogleEdge.css';
+import './toggleEdge.css';
 
 
 function translateMirror(mirror, mirrorCoords, containerRect) {
@@ -19,11 +19,26 @@ function calcOffset(offset) {
   return offset * 2 * 0.5;
 }
 
-class ToogleEdge extends Component {
+class ToggleEdge extends Component {
 
   static propTypes = {
-    value: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    onValue: PropTypes.oneOfType([PropTypes.bool, PropTypes.string, PropTypes.number]),
+    offValue: PropTypes.oneOfType([PropTypes.bool, PropTypes.string, PropTypes.number]),
+    options: PropTypes.shape({
+      onText: PropTypes.string,
+      offText: PropTypes.string,
+    }),
   };
+
+  static defaultProps = {
+    onValue: true,
+    offValue: false,
+    options: {
+      onText: 'on',
+      offText: 'off',
+    }
+  }
   
   toggleClass = 'toggleEdge--container-isOn';
   onClass = 'toggleEdge--button-isOn';
@@ -38,8 +53,9 @@ class ToogleEdge extends Component {
 
 
   componentDidMount() {
-    const containerSelector = '.toggleEdge--container';
+    const containerSelector = `#${this.props.id}`;
     const containers = document.querySelectorAll(containerSelector);
+    console.log(containerSelector, containers);
     if (containers.length === 0) {
       return false;
     }
@@ -48,7 +64,7 @@ class ToogleEdge extends Component {
       draggable: '.toggleEdge--button',
       delay: 0,
       mirror: { constrainDimensions: false, xAxis: true, yAxis: false },
-      appendTo: containerSelector,
+      
     });
 
     draggable.on('drag:start', (evt) => {
@@ -77,8 +93,8 @@ class ToogleEdge extends Component {
         mirror: evt.mirror,
       };
       this.headingText = {
-        on: this.headings.source.dataset.switchOn,
-        off: this.headings.source.dataset.switchOff,
+        on: this.props.options.onText,
+        off: this.props.options.offText,
       };
     });
 
@@ -103,7 +119,7 @@ class ToogleEdge extends Component {
         this.headings.source.textContent = this.headingText.off;
         this.headings.mirror.textContent = this.headingText.off;
         this.isToggled = false;
-        this.props.onChange(this.isToggled);      
+        this.props.onChange({ id: this.props.id, value: this.props.offValue});      
 
       } else if (!this.isToggled && offsetValue > this.dragThreshold) {
         evt.sourceContainer.classList.add(this.toggleClass);
@@ -113,7 +129,7 @@ class ToogleEdge extends Component {
         this.headings.source.textContent = this.headingText.on;
         this.headings.mirror.textContent = this.headingText.on;
         this.isToggled = true;
-        this.props.onChange(this.isToggled);              
+        this.props.onChange({ id: this.props.id, value: this.props.onValue});              
       }
     });
   };
@@ -121,8 +137,8 @@ class ToogleEdge extends Component {
   render() {
     return (
       <div>
-        <div className="toggleEdge--container">
-          <div className="toggleEdge--button toggleEdge--button-isOff" data-switch-off="off" data-switch-on="on">off</div>
+        <div id={this.props.id} className="toggleEdge--container">
+          <div className="toggleEdge--button toggleEdge--button-isOff">{this.props.options.offText}</div>
         </div>
       </div>
     );
@@ -130,4 +146,4 @@ class ToogleEdge extends Component {
 
 }
 
-export default ToogleEdge;
+export default ToggleEdge;

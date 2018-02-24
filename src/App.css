@@ -1,9 +1,14 @@
+
 .app {
     position: relative;
 }
 
 .app-foreground {
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100vh;
 }
 
 .app-background {
