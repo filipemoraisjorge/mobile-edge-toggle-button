@@ -55,7 +55,6 @@ class ToggleEdge extends Component {
   componentDidMount() {
     const containerSelector = `#${this.props.id}`;
     const containers = document.querySelectorAll(containerSelector);
-    console.log(containerSelector, containers);
     if (containers.length === 0) {
       return false;
     }

@@ -20,7 +20,6 @@ class App extends Component {
   }
 
   toggleStatus = ({ id, value }) => {
-    console.log(id, value);
     this.setState({ [id]: value });
   }
 
@@ -32,9 +31,6 @@ class App extends Component {
 
   render() {
     const { status, red, green, blue } = this.state;
-    console.log(`rgb(${red},${green},${blue})`,
-      `rgb(${this.RED_MAX - red},${this.GREEN_MAX - green},${this.BLUE_MAX - blue})`
-    );
     return (
       <div className="app">
         <div className="app-foreground">
