@@ -1,0 +1,30 @@
+
+.app {
+    position: relative;
+}
+
+.app-foreground {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100vh;
+}
+
+.app-background {
+    color: #CCD;
+    background-color: #4654ff;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: background-color 3s ease, color 3s ease;  
+    
+      
+}
+
+.app-background--status{
+    font-size: 8rem;
+}
+

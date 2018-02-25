@@ -11,8 +11,12 @@
     min-width: 2.5rem;
     width: fit-content;
     height: 4.05rem;
-    color: #334;
-    background-color: #CCD;
+    color: #4654ff;
+    background-color: #fff;
+    border-color: #4654ff;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    border-style: solid;
     transition: border-radius 0.2s ease;
 }
 
@@ -21,15 +25,26 @@
 }
 
 .toggleEdge--button-isOn {
+    border-right-width: 0;
+    border-left-width: 3px;
     border-top-left-radius: 2.5rem;
     border-bottom-left-radius: 2.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.2rem;
+
+    
 }
 
 .toggleEdge--button-isOff {
+    border-right-width: 3px;
+    border-left-width: 0;
     border-top-right-radius: 2.5rem;
     border-bottom-right-radius: 2.5rem;
+    padding-right: 0.5rem;
+    padding-left: 0.2rem;
 }
 
 .draggable-mirror {
+    border-width: 3px;
     border-radius: 2.5rem;
 }

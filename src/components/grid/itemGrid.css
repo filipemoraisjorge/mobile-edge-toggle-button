@@ -1,0 +1,76 @@
+.masonary {
+    display: block;
+    margin: 25px auto;
+    width: 95%;
+}
+
+@supports ((display: -ms-grid) or (display: grid)) {
+    .masonary {
+        background-color: #4654ff;
+        display: grid;
+        grid-auto-flow: dense;
+    }
+}
+
+.item {
+    display: flex;
+    flex-flow: column nowrap;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    padding-top: 5px;
+}
+
+.item--header {
+    flex: 1;
+    display: flex;
+    padding: 0 0.8rem;
+}
+
+.item--header--title {
+    display: flex;
+    flex-direction: column;
+    flex:9;
+}
+.item--header--title__name {
+    font-size: 1rem;
+}
+.item--header--title__description {
+    font-size: 0.5rem;
+    text-overflow: ellipsis
+}
+
+.item--header--price {
+    flex:1;
+    display: flex;
+    justify-self: flex-end;
+}
+
+.item--header--price__int {
+    font-size: 1.5rem;
+}
+
+.item--header--price__decimal {
+    margin-top: 0.2rem;
+    font-size: 0.6rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.item--header--price__currency {
+    margin-top: -0.1rem;
+}
+
+.item--image {
+    flex:5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    
+}
+.item--image > i::before {
+    color: #4654ff;
+    font-size: 5rem;
+    margin-left: 0;
+}
