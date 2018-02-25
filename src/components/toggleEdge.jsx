@@ -23,26 +23,26 @@ class ToggleEdge extends Component {
 
   static propTypes = {
     id: PropTypes.string.isRequired,
-    onValue: PropTypes.oneOfType([PropTypes.bool, PropTypes.string, PropTypes.number]),
-    offValue: PropTypes.oneOfType([PropTypes.bool, PropTypes.string, PropTypes.number]),
+    valueRight: PropTypes.oneOfType([PropTypes.bool, PropTypes.string, PropTypes.number]),
+    valueLeft: PropTypes.oneOfType([PropTypes.bool, PropTypes.string, PropTypes.number]),
     options: PropTypes.shape({
-      onText: PropTypes.string,
-      offText: PropTypes.string,
+      textRight: PropTypes.string,
+      textLeft: PropTypes.string,
     }),
   };
 
   static defaultProps = {
-    onValue: true,
-    offValue: false,
+    valueRight: true,
+    valueLeft: false,
     options: {
-      onText: 'on',
-      offText: 'off',
+      textRight: 'on',
+      textLeft: 'off',
     }
   }
 
-  toggleClass = 'toggleEdge--container-isOn';
-  onClass = 'toggleEdge--button-isOn';
-  offClass = 'toggleEdge--button-isOff';
+  toggleClass = 'toggleEdge--container-isRight';
+  rightStyleClass = 'toggleEdge--button-isRight';
+  leftStyleClass = 'toggleEdge--button-isLeft';
   isToggled = false;
   initialMousePosition;
   containerRect;
@@ -92,8 +92,8 @@ class ToggleEdge extends Component {
         mirror: evt.mirror,
       };
       this.headingText = {
-        on: this.props.options.onText,
-        off: this.props.options.offText,
+        right: this.props.options.textRight,
+        left: this.props.options.textLeft,
       };
     });
 
@@ -112,23 +112,23 @@ class ToggleEdge extends Component {
 
       if (this.isToggled && offsetValue < this.dragThreshold) {
         evt.sourceContainer.classList.remove(this.toggleClass);
-        evt.originalSource.classList.remove(this.onClass);
-        evt.originalSource.classList.add(this.offClass);
+        evt.originalSource.classList.remove(this.rightStyleClass);
+        evt.originalSource.classList.add(this.leftStyleClass);
 
-        this.headings.source.textContent = this.headingText.off;
-        this.headings.mirror.textContent = this.headingText.off;
+        this.headings.source.textContent = this.headingText.left;
+        this.headings.mirror.textContent = this.headingText.left;
         this.isToggled = false;
-        this.props.onChange({ id: this.props.id, value: this.props.offValue });
+        this.props.onChange({ id: this.props.id, value: this.props.valueLeft });
 
       } else if (!this.isToggled && offsetValue > this.dragThreshold) {
         evt.sourceContainer.classList.add(this.toggleClass);
-        evt.originalSource.classList.add(this.onClass);
-        evt.originalSource.classList.remove(this.offClass);
+        evt.originalSource.classList.add(this.rightStyleClass);
+        evt.originalSource.classList.remove(this.leftStyleClass);
 
-        this.headings.source.textContent = this.headingText.on;
-        this.headings.mirror.textContent = this.headingText.on;
+        this.headings.source.textContent = this.headingText.right;
+        this.headings.mirror.textContent = this.headingText.right;
         this.isToggled = true;
-        this.props.onChange({ id: this.props.id, value: this.props.onValue });
+        this.props.onChange({ id: this.props.id, value: this.props.valueRight });
       }
     });
   };
@@ -137,7 +137,7 @@ class ToggleEdge extends Component {
     return (
       <div>
         <div id={this.props.id} className="toggleEdge--container">
-          <div className="toggleEdge--button toggleEdge--button-isOff">{this.props.options.offText}</div>
+          <div className="toggleEdge--button toggleEdge--button-isLeft">{this.props.options.textLeft}</div>
         </div>
       </div>
     );
