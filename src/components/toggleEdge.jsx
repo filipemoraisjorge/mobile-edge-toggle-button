@@ -59,11 +59,11 @@ class ToggleEdge extends Component {
       return false;
     }
 
-    let draggable = new Draggable(containers, {
+    const draggable = new Draggable(containers, {
       draggable: '.toggleEdge--button',
       delay: 0,
       mirror: { constrainDimensions: false, xAxis: true, yAxis: false },
-      appendTo: containerSelector,
+
     });
   
     draggable.on('drag:start', (evt) => {
