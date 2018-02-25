@@ -20,11 +20,11 @@
     transition: border-radius 0.2s ease;
 }
 
-.toggleEdge--container-isOn {
+.toggleEdge--container-isRight {
     justify-content: flex-end;
 }
 
-.toggleEdge--button-isOn {
+.toggleEdge--button-isRight {
     border-right-width: 0;
     border-left-width: 3px;
     border-top-left-radius: 2.5rem;
@@ -35,7 +35,7 @@
     
 }
 
-.toggleEdge--button-isOff {
+.toggleEdge--button-isLeft {
     border-right-width: 3px;
     border-left-width: 0;
     border-top-right-radius: 2.5rem;

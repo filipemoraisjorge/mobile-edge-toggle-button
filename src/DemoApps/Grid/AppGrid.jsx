@@ -31,7 +31,7 @@ class AppGrid extends Component {
       <ToggleEdge
         key={color.name}
         id={color.name}
-        options={{ onText: color.name, offText: color.name }}
+        options={{ textRight: color.name, textLeft: color.name }}
         onChange={this.toggleStatus} />
     ))
   }

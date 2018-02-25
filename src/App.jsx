@@ -35,16 +35,16 @@ class App extends Component {
       <div className="app">
         <div className="app-foreground">
           <ToggleEdge id="red"
-            offValue={this.RED_MIN} onValue={this.RED_MAX}
-            options={{ onText: 'r', offText: 'r' }}
+            valueLeft={this.RED_MIN} valueRight={this.RED_MAX}
+            options={{ textRight: 'r', textLeft: 'r' }}
             onChange={this.toggleStatus} />
           <ToggleEdge id="green"
-            offValue={this.GREEN_MIN} onValue={this.GREEN_MAX}
-            options={{ onText: 'g', offText: 'g' }}
+            valueLeft={this.GREEN_MIN} valueRight={this.GREEN_MAX}
+            options={{ textRight: 'g', textLeft: 'g' }}
             onChange={this.toggleStatus} />
           <ToggleEdge id="blue"
-            offValue={this.BLUE_MIN} onValue={this.BLUE_MAX}
-            options={{ onText: 'b', offText: 'b' }}
+            valueLeft={this.BLUE_MIN} valueRight={this.BLUE_MAX}
+            options={{ textRight: 'b', textLeft: 'b' }}
             onChange={this.toggleStatus} />
 
         </div>
