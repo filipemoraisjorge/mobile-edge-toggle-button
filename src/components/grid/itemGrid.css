@@ -6,7 +6,6 @@
 
 @supports ((display: -ms-grid) or (display: grid)) {
     .masonary {
-        background-color: #4654ff;
         display: grid;
         grid-auto-flow: dense;
     }
@@ -15,7 +14,7 @@
 .item {
     display: flex;
     flex-flow: column nowrap;
-    border: 1px solid darkgray;
+    border: 1px solid white;
     border-radius: 5px;
     padding-top: 5px;
 }
@@ -70,7 +69,7 @@
     
 }
 .item--image > i::before {
-    color: #4654ff;
+    color: white;
     font-size: 5rem;
     margin-left: 0;
 }

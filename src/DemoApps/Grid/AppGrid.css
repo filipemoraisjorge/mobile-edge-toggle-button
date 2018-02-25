@@ -12,8 +12,8 @@
 }
 
 .app-background {
-    color: #CCD;
-    background-color: #4654ff;
+    color: black;
+    background-color: white;
     height: 100%;
     display: flex;
     justify-content: center;
