@@ -6,7 +6,7 @@ import './toggleEdge.css';
 
 
 function translateMirror(mirror, mirrorCoords, containerRect) {
-  if ( mirrorCoords.left < containerRect.left || mirrorCoords.right > containerRect.right ) {
+  if (mirrorCoords.left < containerRect.left || mirrorCoords.right > containerRect.right) {
     return;
   }
 
@@ -39,7 +39,7 @@ class ToggleEdge extends Component {
       offText: 'off',
     }
   }
-  
+
   toggleClass = 'toggleEdge--container-isOn';
   onClass = 'toggleEdge--button-isOn';
   offClass = 'toggleEdge--button-isOff';
@@ -59,19 +59,19 @@ class ToggleEdge extends Component {
       return false;
     }
 
-    const draggable = new Draggable(containers, {
+    let draggable = new Draggable(containers, {
       draggable: '.toggleEdge--button',
       delay: 0,
       mirror: { constrainDimensions: false, xAxis: true, yAxis: false },
-      
+      appendTo: containerSelector,
     });
-
+  
     draggable.on('drag:start', (evt) => {
       evt.originalSource.style.opacity = 0;
       evt.source.style.opacity = 0;
-      
+
       this.initialMousePosition = {
-        x: evt.sensorEvent.clientX, 
+        x: evt.sensorEvent.clientX,
         y: evt.sensorEvent.clientY,
       };
     });
@@ -84,7 +84,7 @@ class ToggleEdge extends Component {
     draggable.on('mirror:created', (evt) => {
       this.containerRect = evt.sourceContainer.getBoundingClientRect();
       this.dragRect = evt.originalSource.getBoundingClientRect();
-  
+
       const containerRectQuarter = this.containerRect.width / 4;
       this.dragThreshold = this.isToggled ? containerRectQuarter * -1 : containerRectQuarter;
       this.headings = {
@@ -107,28 +107,28 @@ class ToggleEdge extends Component {
         right: this.dragRect.right + offsetValue,
         left: this.dragRect.left + offsetValue,
       };
-  
+
       translateMirror(evt.mirror, this.mirrorCoords, this.containerRect);
-  
+
       if (this.isToggled && offsetValue < this.dragThreshold) {
         evt.sourceContainer.classList.remove(this.toggleClass);
         evt.originalSource.classList.remove(this.onClass);
         evt.originalSource.classList.add(this.offClass);
-        
+
         this.headings.source.textContent = this.headingText.off;
         this.headings.mirror.textContent = this.headingText.off;
         this.isToggled = false;
-        this.props.onChange({ id: this.props.id, value: this.props.offValue});      
+        this.props.onChange({ id: this.props.id, value: this.props.offValue });
 
       } else if (!this.isToggled && offsetValue > this.dragThreshold) {
         evt.sourceContainer.classList.add(this.toggleClass);
         evt.originalSource.classList.add(this.onClass);
         evt.originalSource.classList.remove(this.offClass);
-        
+
         this.headings.source.textContent = this.headingText.on;
         this.headings.mirror.textContent = this.headingText.on;
         this.isToggled = true;
-        this.props.onChange({ id: this.props.id, value: this.props.onValue});              
+        this.props.onChange({ id: this.props.id, value: this.props.onValue });
       }
     });
   };
