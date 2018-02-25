@@ -29,7 +29,7 @@ export default class GridGenerator extends Component {
         return new Item({
             id,
             color: this.getRandomColor(),
-            format: this.getRandomFormat(2, 2),
+            format: this.getRandomFormat(1, 1),
             price: this.getRandomPrice(5, 35),
             icon: this.getRandomIcon(),
         });

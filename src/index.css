@@ -1,9 +1,16 @@
-@import url('https://fonts.googleapis.com/css?family=Questrial:400');
+@import url('https://fonts.googleapis.com/css?family=Questrial');
+/* @import url('https://fonts.googleapis.com/css?family=Bitter'); */
+/* @import url('https://fonts.googleapis.com/css?family=Space+Mono'); */
+
 @import url('/icons/landscapes-filled/font/flaticon.css');
 
 body {
   margin: 0;
   padding: 0;
+  /* font-family: 'Bitter', sans-serif; */
+  /* font-family: 'Space Mono', monospace; */
   font-family: 'Questrial', sans-serif;
+
+  
   font-size: 16px;
 }

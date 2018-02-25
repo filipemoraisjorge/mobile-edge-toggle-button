@@ -1,7 +1,7 @@
 import React from 'react';
 import './itemGrid.css';
 
-const masonryUnitPixels = 80;
+const masonryUnitPixels = 160;
 const masonryGutterPixels = 5;
 
 const random = (min, max) => min + Math.round(Math.random() * (max - min));
