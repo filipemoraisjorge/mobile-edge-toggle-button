@@ -11,6 +11,7 @@ future:
     * values
         * isLeft
         * isRight 
+    * dragThreshold
     * texts
         * isLeft
         * isRight
@@ -19,7 +20,7 @@ future:
         * style isRight
         * style onDrag
         * style container
-* fix don't scroll background while dragging toggles
+* fix don't scroll background while dragging toggles. pointer events?
 * demo page
 * decople behaviour from ui
 * create slider
